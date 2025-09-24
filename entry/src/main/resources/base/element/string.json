@@ -1,0 +1,60 @@
+{
+  "string": [
+    {
+      "name": "module_desc",
+      "value": "module description"
+    },
+    {
+      "name": "EntryAbility_desc",
+      "value": "description"
+    },
+    {
+      "name": "EntryAbility_label",
+      "value": "label"
+    },
+    {
+      "name": "wifi_manager",
+      "value": "Wifi Manager\n P2P Connect"
+    },
+    {
+      "name": "mode",
+      "value": "Mode"
+    },
+    {
+      "name": "change_mode",
+      "value": "Change Mode"
+    },
+    {
+      "name": "host_mode_activated",
+      "value": "Host Mode Activated"
+    },
+    {
+      "name": "device_address",
+      "value": "Device Address"
+    },
+    {
+      "name": "group_name",
+      "value": "Group Name"
+    },
+    {
+      "name": "connect",
+      "value": "Connect"
+    },
+    {
+      "name": "wifi_list",
+      "value": "WLAN List"
+    },
+    {
+      "name": "error_message_not_include_group_name",
+      "value": "Can't find the group name."
+    },
+    {
+      "name": "info_message_created_group",
+      "value": "Group successfully created"
+    },
+    {
+      "name": "info_message_connected_p2p_group",
+      "value": "Connected p2p group:"
+    }
+  ]
+}
