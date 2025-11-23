@@ -1,7 +1,7 @@
 import { wifiManager } from '@kit.ConnectivityKit';
 import HostMode from '../components/HostMode';
 import ClientMode from '../components/ClientMode';
-import { SizeConstants } from '../constants/SizeConstants';
+import { sizeConstants } from '../constants/SizeConstants';
 
 enum ModeEnum {
   Client = 'Client',
@@ -11,14 +11,15 @@ enum ModeEnum {
 @Entry
 @Component
 struct Index {
+  private intervalId: number = 0;
   @State mode: ModeEnum = ModeEnum.Client;
   @State deviceList: Array<string> = [];
   @State config: wifiManager.WifiP2PConfig = {
-    deviceAddress: '11:22:33:44:55:66',
+    deviceAddress: '00:11:22:33:44:55',
     deviceAddressType: 1,
     netId: -2,
-    passphrase: '12345678',
-    groupName: 'testGroupName',
+    passphrase: '00000000',
+    groupName: 'testGroup',
     goBand: 0
   };
 
@@ -30,11 +31,14 @@ struct Index {
     this.mode = ModeEnum.Host;
   }
 
-  onPageShow(): void {
-    setInterval(() => {
+  aboutToAppear(): void {
+    this.intervalId = setInterval(() => {
       this.deviceList = wifiManager.getScanInfoList().map(i => i.ssid).sort();
-    }, 223000);
+    }, 2000);
+  }
 
+  aboutToDisappear(): void {
+    clearInterval(this.intervalId);
   }
 
   build() {
@@ -52,7 +56,7 @@ struct Index {
             .margin({ bottom: 6 })
             .fontColor($r('app.color.text_light'))
             .width('100%')
-            .padding({ right: SizeConstants.PERCENT_12 })
+            .padding({ right: sizeConstants.PERCENT_12 })
             .textAlign(TextAlign.End)
             .backgroundColor($r('app.color.background_secondary'))
 
@@ -65,11 +69,11 @@ struct Index {
             .borderRadius(8)
             .padding(6)
             .backgroundColor($r('app.color.primary'))
-            .width(SizeConstants.PERCENT_60)
+            .width(sizeConstants.PERCENT_60)
 
             Text(this.mode)
               .fontSize($r('app.float.mode_font_size'))
-              .width(SizeConstants.PERCENT_30)
+              .width(sizeConstants.PERCENT_30)
           }
 
           if (this.mode === ModeEnum.Host) {
